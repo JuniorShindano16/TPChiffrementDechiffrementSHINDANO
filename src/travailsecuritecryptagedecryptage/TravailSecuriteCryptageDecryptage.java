@@ -1,4 +1,4 @@
-/*
+/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -342,7 +342,22 @@ public class TravailSecuriteCryptageDecryptage {
         }
         int[] pi1=tempo;
         
-        int [] inversePi= new int [pi.length];
+        
+        
+        tempo = new  int [p.length];
+        for (int i = 0; i < p.length; i++) {
+            int j=0;
+            boolean bl=false;
+            do{
+                if(p[j]==i){
+                    bl=true;
+                }
+                else j++;
+            }while(!bl);
+            tempo[i]=j;
+        }
+        
+        int [] inverseP= tempo;
         
         System.out.println("pi1 = "+Arrays.toString(pi1));
         
@@ -363,12 +378,12 @@ public class TravailSecuriteCryptageDecryptage {
         
         //Application Round 1 
         
-        int [] Gauche1 = permutation(Ouexclusive(D2, K21), pi1);
+        int [] Gauche1 = permutation(Ouexclusive(D2, K21), inverseP);
         int [] Droit1= Ouexclusive(G2, OuLogique(Go, K1));
         
         //Application Round 2 
         
-        int [] dernierGauche = permutation(Ouexclusive(D1, K1), pi1);
+        int [] dernierGauche = permutation(Ouexclusive(D1, K1), inverseP);
         int [] dernierDroit= Ouexclusive(G1, OuLogique(Go, K1));
         
  
